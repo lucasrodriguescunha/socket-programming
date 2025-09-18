@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 
 public class Cliente {
-
     private static final String HOST = "127.0.0.1";
     private static final int PORTA = 5000;
     private static final Logger logger = Logger.getLogger(Cliente.class.getName());

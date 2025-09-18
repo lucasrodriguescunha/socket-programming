@@ -10,11 +10,10 @@ public class Cliente {
 
     public static void main(String[] args) {
         try (Socket socket = new Socket(HOST, PORTA);
-        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-        BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in))) {
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in))) {
 
             System.out.println("Conectado ao servidor!");
-
             new Thread(new Recebedor(socket)).start();
 
             String msg;
@@ -26,14 +25,7 @@ public class Cliente {
         }
     }
 
-    static class Recebedor implements Runnable {
-
-        private final Socket socket;
-
-        public Recebedor(Socket socket) {
-            this.socket = socket;
-        }
-
+    record Recebedor(Socket socket) implements Runnable {
         public void run() {
             try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
                 String msg;

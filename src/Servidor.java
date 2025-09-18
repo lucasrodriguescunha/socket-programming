@@ -29,37 +29,36 @@ public class Servidor {
     }
 
     record ClienteHandler(Socket socket) implements Runnable {
-
         public void run() {
-                try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 
+                synchronized (clientes) {
+                    clientes.add(out);
+                }
+
+                String msg;
+                while ((msg = in.readLine()) != null) {
+                    System.out.println("Mensagem recebida: " + msg);
+
                     synchronized (clientes) {
-                        clientes.add(out);
-                    }
-
-                    String msg;
-                    while ((msg = in.readLine()) != null) {
-                        System.out.println("Mensagem recebida: " + msg);
-
-                        synchronized (clientes) {
-                            for (PrintWriter writer : clientes) {
-                                writer.println(msg);
-                            }
+                        for (PrintWriter writer : clientes) {
+                            writer.println(msg);
                         }
                     }
+                }
+            } catch (IOException e) {
+                logger.log(Level.WARNING, "Erro na comunicação com cliente", e);
+            } finally {
+                try {
+                    socket.close();
                 } catch (IOException e) {
-                    logger.log(Level.WARNING, "Erro na comunicação com cliente", e);
-                } finally {
-                    try {
-                        socket.close();
-                    } catch (IOException e) {
-                        logger.log(Level.WARNING, "Erro ao fechar socket do cliente", e);
-                    }
-                    synchronized (clientes) {
-                        clientes.removeIf(PrintWriter::checkError);
-                    }
+                    logger.log(Level.WARNING, "Erro ao fechar socket do cliente", e);
+                }
+                synchronized (clientes) {
+                    clientes.removeIf(PrintWriter::checkError);
                 }
             }
         }
+    }
 }

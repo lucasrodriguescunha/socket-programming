@@ -50,15 +50,11 @@ Após a compilação, você verá os seguintes arquivos `.class` gerados:
 
 ### Passo 2: Executar o Servidor
 
-**Abra um terminal** e execute o servidor:
+Abra um terminal e execute o servidor:
 
 ```bash
-# Opção 1: Executar do diretório src
 cd C:\Users\Lucas\IdeaProjects\socket-programming\src
 java Servidor
-
-# Opção 2: Executar de qualquer lugar especificando o classpath
-java -cp "C:\Users\Lucas\IdeaProjects\socket-programming\src" Servidor
 ```
 
 Você verá a mensagem:
@@ -68,15 +64,11 @@ Servidor rodando na porta 5000
 
 ### Passo 3: Executar os Clientes
 
-**Abra um novo terminal** para cada cliente que deseja conectar:
+Para cada cliente que quiser conectar, abra um **novo terminal** e execute:
 
 ```bash
-# Opção 1: Executar do diretório src
 cd C:\Users\Lucas\IdeaProjects\socket-programming\src
 java Cliente
-
-# Opção 2: Executar de qualquer lugar especificando o classpath
-java -cp "C:\Users\Lucas\IdeaProjects\socket-programming\src" Cliente
 ```
 
 Você verá a mensagem:
@@ -86,43 +78,32 @@ Conectado ao servidor!
 
 ## 💬 Como Usar o Chat
 
-1. **Inicie o servidor** primeiro (Passo 2)
-2. **Conecte um ou mais clientes** (Passo 3)
-3. **Digite mensagens** no terminal do cliente e pressione Enter
-4. **Todas as mensagens** aparecerão em todos os clientes conectados precedidas por `>>`
-5. **Para sair**, pressione `Ctrl+C` no terminal
+1. **Enviar mensagens**: Digite qualquer mensagem no terminal do cliente e pressione Enter
+2. **Receber mensagens**: As mensagens de outros clientes aparecerão automaticamente com o prefixo `>>`
+3. **Sair do chat**: Pressione `Ctrl+C` para desconectar
 
-### Exemplo de Uso:
+### Exemplo de uso:
 
-**Terminal do Servidor:**
-```
-Servidor rodando na porta 5000
-Novo cliente conectado Socket[addr=/127.0.0.1,port=62851,localport=5000]
-Mensagem recebida: Olá pessoal!
-Novo cliente conectado Socket[addr=/127.0.0.1,port=62852,localport=5000]
-Mensagem recebida: Oi! Como vocês estão?
-```
-
-**Terminal do Cliente 1:**
+**Cliente 1:**
 ```
 Conectado ao servidor!
 Olá pessoal!
->> Olá pessoal!
->> Oi! Como vocês estão?
+>> João: Oi! Como vocês estão?
+Bem, obrigado!
 ```
 
-**Terminal do Cliente 2:**
+**Cliente 2:**
 ```
 Conectado ao servidor!
 >> Olá pessoal!
-Oi! Como vocês estão?
->> Oi! Como vocês estão?
+João: Oi! Como vocês estão?
+>> Bem, obrigado!
 ```
 
-## ⚠️ Erros Comuns e Soluções
+## ⚠️ Problemas Comuns
 
-### ❌ "Invalid or corrupt jarfile"
-**Problema**: Tentativa de usar `java -jar` com arquivos `.java`
+### Erro: "Invalid or corrupt jarfile"
+**Problema**: Tentou usar `java -jar` com arquivo `.java`
 ```bash
 # ❌ ERRADO
 java -jar Cliente.java
@@ -131,58 +112,37 @@ java -jar Cliente.java
 java Cliente
 ```
 
-### ❌ "Could not find or load main class"
-**Problema**: Não estar no diretório correto ou classpath incorreto
+### Erro: "Could not find or load main class"
+**Solução**: Certifique-se de estar no diretório correto e que os arquivos foram compilados:
 ```bash
-# ✅ SOLUÇÃO 1: Navegar para o diretório correto
 cd C:\Users\Lucas\IdeaProjects\socket-programming\src
+javac *.java
 java Servidor
-
-# ✅ SOLUÇÃO 2: Especificar o classpath completo
-java -cp "C:\Users\Lucas\IdeaProjects\socket-programming\src" Servidor
 ```
 
-### ❌ "Connection refused"
-**Problema**: Servidor não está rodando ou porta incorreta
-- Certifique-se de que o servidor foi iniciado primeiro
-- Verifique se a porta 5000 não está sendo usada por outro processo
+### Erro de conexão
+**Solução**: Verifique se:
+1. O servidor está rodando antes de conectar os clientes
+2. A porta 5000 não está sendo usada por outro programa
+3. O firewall não está bloqueando a conexão
 
-## 🔧 Configurações
+## 🔧 Tecnologias Utilizadas
 
-### Alterar a Porta
-Para usar uma porta diferente, modifique a constante `PORTA` nos arquivos:
-- `Servidor.java`: linha 11
-- `Cliente.java`: linha 6
+- **Java**: Linguagem de programação
+- **Socket Programming**: Comunicação TCP/IP
+- **Multithreading**: Para suportar múltiplos clientes
+- **BufferedReader/PrintWriter**: Para comunicação de dados
 
-### Alterar o Host
-Para conectar a um servidor remoto, modifique a constante `HOST` no `Cliente.java`: linha 5
+## 📝 Estrutura do Código
 
-## 🛠️ Tecnologias Utilizadas
+### Servidor.java
+- **Main**: Aceita conexões e cria threads para cada cliente
+- **ClienteHandler**: Gerencia comunicação individual com cada cliente
 
-- **Java SE**: Linguagem principal
-- **java.net.Socket**: Para comunicação TCP
-- **java.io**: Para entrada/saída de dados
-- **java.util.concurrent**: Para sincronização de threads
-
-## 📝 Notas Importantes
-
-- O servidor deve ser iniciado **antes** dos clientes
-- Cada cliente roda em uma thread separada no servidor
-- As mensagens são enviadas para **todos** os clientes conectados (broadcast)
-- O sistema é **case-sensitive** para comandos
-- Para parar o servidor, use `Ctrl+C` no terminal
-
-## 🤝 Contribuição
-
-Para melhorar este projeto, você pode:
-- Adicionar autenticação de usuários
-- Implementar salas de chat privadas
-- Adicionar interface gráfica (GUI)
-- Implementar comandos especiais (/help, /quit, etc.)
-- Adicionar logs mais detalhados
+### Cliente.java  
+- **Main**: Conecta ao servidor e envia mensagens do teclado
+- **Recebedor**: Thread separada para receber mensagens do servidor
 
 ---
 
-**Autor**: Lucas  
-**Data**: Setembro 2025  
-**Versão**: 1.0
+**Desenvolvido por Lucas** 🚀

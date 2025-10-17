@@ -6,7 +6,7 @@
 
 ## Descrição
 
-Este projeto é um sistema de chat cliente-servidor desenvolvido em Java utilizando socket programming. O sistema permite que múltiplos clientes se conectem simultaneamente a um servidor central e enviem mensagens identificadas por seus nomes.
+Este projeto é um sistema de chat cliente-servidor desenvolvido em Java utilizando socket programming. O sistema permite que múltiplos clientes se conectem simultaneamente a um servidor central através de uma interface gráfica, onde cada usuário pode inserir seu nome e enviar mensagens identificadas por seus nomes.
 
 **Qual foi minha motivação?**
 
@@ -46,7 +46,7 @@ O projeto resolve o problema de comunicação em rede entre múltiplos usuários
 - Java Development Kit (JDK) 8 ou superior
 - Editor de código ou IDE (recomendado: IntelliJ IDEA, Eclipse, VS Code)
 
-### Passos de Instalação
+### Passos de instalação
 
 1. Clone o repositório ou baixe os arquivos do projeto:
 ```bash
@@ -60,12 +60,12 @@ cd socket-programming/src
 
 3. Compile os arquivos Java:
 ```bash
-javac Servidor.java ClienteGUI.java Cliente.java
+javac Servidor.java ClienteGUI.java
 ```
 
 ## Uso
 
-### 1. Iniciando o Servidor
+### 1. Iniciando o servidor
 
 Primeiro, inicie o servidor que ficará escutando na porta 12345:
 
@@ -79,7 +79,7 @@ Servidor iniciado na porta 12345
 Aguardando conexões...
 ```
 
-### 2. Conectando Clientes com Interface Gráfica
+### 2. Conectando clientes com interface gráfica
 
 Em terminais separados (ou executando múltiplas instâncias), inicie os clientes GUI:
 
@@ -95,15 +95,7 @@ java ClienteGUI
 4. Clique em "Enviar" ou pressione Enter
 5. Para sair, digite "sair" e envie
 
-### 3. Cliente de Linha de Comando (Opcional)
-
-Você também pode usar o cliente de linha de comando:
-
-```bash
-java Cliente
-```
-
-### Exemplo de Uso
+### Exemplo de uso
 
 **Terminal do Servidor:**
 ```
@@ -135,21 +127,14 @@ Você (Maria): Oi Lucas, tudo bem?
 
 ## Características
 
-✅ **Suporte a Múltiplos Clientes**: O servidor pode gerenciar vários clientes conectados simultaneamente usando threads
+**Suporte a múltiplos clientes**: O servidor pode gerenciar vários clientes conectados simultaneamente usando threads
+**Interface gráfica intuitiva**: Cliente com GUI desenvolvida em Swing, fácil de usar
+**Identificação de usuários**: Cada mensagem é identificada com o nome do remetente
+**Gerenciamento de conexões**: Conectar e desconectar de forma segura
+**Comunicação em tempo real**: Mensagens são enviadas e recebidas instantaneamente
+**Tratamento de erros**: Gerenciamento adequado de exceções e desconexões inesperadas
 
-✅ **Interface Gráfica Intuitiva**: Cliente com GUI desenvolvida em Swing, fácil de usar
-
-✅ **Identificação de Usuários**: Cada mensagem é identificada com o nome do remetente
-
-✅ **Gerenciamento de Conexões**: Conectar e desconectar de forma segura
-
-✅ **Comunicação em Tempo Real**: Mensagens são enviadas e recebidas instantaneamente
-
-✅ **Tratamento de Erros**: Gerenciamento adequado de exceções e desconexões inesperadas
-
-✅ **Cliente de Linha de Comando**: Opção alternativa ao cliente GUI
-
-## Estrutura do Projeto
+## Estrutura do projeto
 
 ```
 socket-programming/
@@ -159,11 +144,10 @@ socket-programming/
 │
 └── src/
     ├── Servidor.java          # Servidor multi-threaded
-    ├── ClienteGUI.java        # Cliente com interface gráfica
-    └── Cliente.java           # Cliente de linha de comando
+    └── ClienteGUI.java        # Cliente com interface gráfica
 ```
 
-### Arquivos Principais
+### Arquivos principais
 
 **Servidor.java**
 - Gerencia múltiplas conexões de clientes usando threads
@@ -174,12 +158,9 @@ socket-programming/
 - Interface gráfica com Swing
 - Campos para nome de usuário e mensagens
 - Área de texto para histórico
+- Botão de conexão e envio de mensagens
 
-**Cliente.java**
-- Cliente básico de linha de comando
-- Alternativa ao ClienteGUI
-
-## Como Funciona
+## Como funciona
 
 ### Arquitetura
 
@@ -191,7 +172,7 @@ O sistema utiliza a arquitetura **cliente-servidor** com comunicação TCP/IP:
 
 3. **Comunicação**: As mensagens são enviadas via `PrintWriter` e recebidas via `BufferedReader` sobre streams de socket.
 
-### Fluxo de Comunicação
+### Fluxo de comunicação
 
 ```
 Cliente 1 ----> Socket ----> Servidor (Thread 1)
@@ -199,12 +180,12 @@ Cliente 2 ----> Socket ----> Servidor (Thread 2)
 Cliente 3 ----> Socket ----> Servidor (Thread 3)
 ```
 
-### Protocolo de Mensagens
+### Protocolo de mensagens
 
 - Formato: `Nome: mensagem`
 - Comando especial: `sair` (encerra a conexão)
 
-## Como Contribuir
+## Como contribuir
 
 Contribuições são bem-vindas! Se você deseja melhorar este projeto:
 
@@ -214,7 +195,7 @@ Contribuições são bem-vindas! Se você deseja melhorar este projeto:
 4. Push para a branch (`git push origin feature/MinhaFeature`)
 5. Abra um Pull Request
 
-### Ideias para Contribuições
+### Ideias para contribuições
 
 - Implementar broadcast de mensagens (todos os clientes recebem as mensagens)
 - Adicionar salas de chat
@@ -224,34 +205,10 @@ Contribuições são bem-vindas! Se você deseja melhorar este projeto:
 - Adicionar suporte a emojis
 - Implementar histórico de mensagens persistente
 
-## Créditos
-
-Desenvolvido por [Lucas](https://github.com/seu-usuario)
-
-### Recursos Utilizados
+### Recursos utilizados
 
 - [Oracle Java Documentation - Socket Programming](https://docs.oracle.com/javase/tutorial/networking/sockets/)
 - [Java Swing Tutorial](https://docs.oracle.com/javase/tutorial/uiswing/)
 - [Baeldung - Java Networking](https://www.baeldung.com/java-networking)
 
-## Licença
-
-Este projeto está licenciado sob a [MIT License](https://choosealicense.com/licenses/mit/).
-
 ---
-
-## Próximos Passos
-
-- [ ] Implementar broadcast de mensagens entre clientes
-- [ ] Adicionar interface gráfica ao servidor para visualizar clientes conectados
-- [ ] Implementar sistema de salas de chat
-- [ ] Adicionar autenticação de usuários
-- [ ] Criar testes unitários
-- [ ] Adicionar logging com Log4j
-- [ ] Implementar reconexão automática
-
----
-
-**Nota**: Este projeto foi desenvolvido para fins educacionais e demonstração de conceitos de programação de redes em Java.
-
-Para dúvidas ou sugestões, abra uma issue no repositório!

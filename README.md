@@ -34,10 +34,10 @@ O projeto resolve o problema de comunicação em rede entre múltiplos usuários
 - [Instalação](#instalação)
 - [Uso](#uso)
 - [Características](#características)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Como Funciona](#como-funciona)
-- [Como Contribuir](#como-contribuir)
-- [Recursos Utilizados](#recursos-utilizados)
+- [Estrutura do projeto](#estrutura-do-projeto)
+- [Como funciona](#como-funciona)
+- [Como contribuir](#como-contribuir)
+- [Recursos utilizados](#recursos-utilizados)
 
 ## Instalação
 

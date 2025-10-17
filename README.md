@@ -36,8 +36,8 @@ O projeto resolve o problema de comunicação em rede entre múltiplos usuários
 - [Características](#características)
 - [Estrutura do Projeto](#estrutura-do-projeto)
 - [Como Funciona](#como-funciona)
-- [Créditos](#créditos)
-- [Licença](#licença)
+- [Como Contribuir](#como-contribuir)
+- [Recursos Utilizados](#recursos-utilizados)
 
 ## Instalação
 
@@ -127,12 +127,12 @@ Você (Maria): Oi Lucas, tudo bem?
 
 ## Características
 
-**Suporte a múltiplos clientes**: O servidor pode gerenciar vários clientes conectados simultaneamente usando threads
-**Interface gráfica intuitiva**: Cliente com GUI desenvolvida em Swing, fácil de usar
-**Identificação de usuários**: Cada mensagem é identificada com o nome do remetente
-**Gerenciamento de conexões**: Conectar e desconectar de forma segura
-**Comunicação em tempo real**: Mensagens são enviadas e recebidas instantaneamente
-**Tratamento de erros**: Gerenciamento adequado de exceções e desconexões inesperadas
+✅ **Suporte a múltiplos clientes**: O servidor pode gerenciar vários clientes conectados simultaneamente usando threads
+✅ **Interface gráfica intuitiva**: Cliente com GUI desenvolvida em Swing, fácil de usar
+✅ **Identificação de usuários**: Cada mensagem é identificada com o nome do remetente
+✅ **Gerenciamento de conexões**: Conectar e desconectar de forma segura
+✅ **Comunicação em tempo real**: Mensagens são enviadas e recebidas instantaneamente
+✅ **Tratamento de erros**: Gerenciamento adequado de exceções e desconexões inesperadas
 
 ## Estrutura do projeto
 
@@ -205,10 +205,14 @@ Contribuições são bem-vindas! Se você deseja melhorar este projeto:
 - Adicionar suporte a emojis
 - Implementar histórico de mensagens persistente
 
-### Recursos utilizados
+## Recursos utilizados
 
 - [Oracle Java Documentation - Socket Programming](https://docs.oracle.com/javase/tutorial/networking/sockets/)
 - [Java Swing Tutorial](https://docs.oracle.com/javase/tutorial/uiswing/)
 - [Baeldung - Java Networking](https://www.baeldung.com/java-networking)
 
 ---
+
+**Nota**: Este projeto foi desenvolvido para fins educacionais e demonstração de conceitos de programação de redes em Java.
+
+Para dúvidas ou sugestões, abra uma issue no repositório!
